@@ -3,7 +3,7 @@
 import axios from "axios";
 
 export default {
-  name: "EventCard",
+  name: "UserCard",
   props: {
     searchItemProp: {
       type: Object,
@@ -12,7 +12,43 @@ export default {
   },
   data() {
     return {
-      userData: null,
+      userData: {
+        login: "Tejs1",
+        id: 67797070,
+        node_id: "MDQ6VXNlcjY3Nzk3MDcw",
+        avatar_url: "https://avatars.githubusercontent.com/u/67797070?v=4",
+        gravatar_id: "",
+        url: "https://api.github.com/users/Tejs1",
+        html_url: "https://github.com/Tejs1",
+        followers_url: "https://api.github.com/users/Tejs1/followers",
+        following_url:
+          "https://api.github.com/users/Tejs1/following{/other_user}",
+        gists_url: "https://api.github.com/users/Tejs1/gists{/gist_id}",
+        starred_url:
+          "https://api.github.com/users/Tejs1/starred{/owner}{/repo}",
+        subscriptions_url: "https://api.github.com/users/Tejs1/subscriptions",
+        organizations_url: "https://api.github.com/users/Tejs1/orgs",
+        repos_url: "https://api.github.com/users/Tejs1/repos",
+        events_url: "https://api.github.com/users/Tejs1/events{/privacy}",
+        received_events_url:
+          "https://api.github.com/users/Tejs1/received_events",
+        type: "User",
+        site_admin: false,
+        name: "Tejas Thorat",
+        company: null,
+        blog: "https://www.tejs.me/",
+        location: null,
+        email: null,
+        hireable: true,
+        bio: null,
+        twitter_username: "tejsrelax",
+        public_repos: 74,
+        public_gists: 1,
+        followers: 19,
+        following: 99,
+        created_at: "2020-07-03T15:29:02Z",
+        updated_at: "2022-10-08T12:09:48Z",
+      },
     };
   },
   computed: {
@@ -33,31 +69,53 @@ export default {
   },
 
   created() {
-    axios
-      .get(this.searchItemProp.url)
-      .then((response) => {
-        this.userData = response.data;
-        console.log(response.data.blog);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    // axios
+    //   .get(this.searchItemProp.url)
+    //   .then((response) => {
+    //     this.userData = response.data;
+    //     console.log(response.data.blog);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   },
 };
 </script>
 
 <template>
   <li class="user-div">
-    <div class="avatar-div">
-      <img :src="user.avatar_url" alt="avatar_url" />
-    </div>
+    <RouterLink
+      :to="{
+        name: 'UserProfileView',
+        params: { name: userData.login },
+      }"
+      class="avatar-div"
+    >
+      <img :src="user.avatar_url" alt="avatar_url"
+    /></RouterLink>
+
     <div class="user-data">
       <div class="user-name">
-        <div v-if="user.name">Name : {{ user.name }}</div>
-        <div>username : {{ user.login }}</div>
+        <div v-if="user.name">{{ user.name }}</div>
+        <RouterLink
+          :id="userData.id"
+          :to="{
+            name: 'UserProfileView',
+            params: { name: userData.login },
+
+            // props: { username: userData.name },
+          }"
+        >
+          <div>@{{ user.login }}</div></RouterLink
+        >
+      </div>
+      <div>
+        <div>Followers :{{ user.followers }}</div>
+        <div>Following :{{ user.following }}</div>
       </div>
       <div>
         <span>abx@emailcom</span>
+        <br />
         <a :href="user.blog" target="_blank">blog</a>
       </div>
     </div>
