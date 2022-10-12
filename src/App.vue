@@ -6,8 +6,10 @@
   <header class="wrapper">
     <h1>Github Search</h1>
     <nav>
-      <RouterLink to="/"><button>Home</button> </RouterLink>
-      <RouterLink to="/about"> <button>About</button> </RouterLink>
+      <RouterLink :to="{ name: 'HomeView' }"><button>Home</button> </RouterLink>
+      <RouterLink :to="{ name: 'AboutView' }">
+        <button>About</button>
+      </RouterLink>
     </nav>
   </header>
   <RouterView />

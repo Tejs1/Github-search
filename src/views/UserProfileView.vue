@@ -15,13 +15,17 @@ export default {
     };
   },
   created() {
-    console.log(this.username);
     // Octokit.getUserRepo().then((res) => console.log(res.data));
+  },
+  computed: {
+    name() {
+      return this.userData;
+    },
   },
 };
 </script>
 <template>
-  <div>{{ userData }}</div>
+  <div></div>
 </template>
 
 <style lang="scss" scoped></style>
