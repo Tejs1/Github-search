@@ -323,7 +323,7 @@ export default {
     <button id="search" type="submit">Search</button>
   </form>
   <main class="output">
-    <ul>
+    <ul v-if="searchResults">
       <UserCard
         v-for="searchItem in searchResults"
         :key="searchItem.id"

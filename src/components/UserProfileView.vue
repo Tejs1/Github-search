@@ -1,4 +1,6 @@
 <script>
+import Octokit from "../services/Octokit";
+
 export default {
   name: "UserProfileView",
   props: {
@@ -9,9 +11,9 @@ export default {
       type: String,
     },
   },
-  created() {
-    // console.log(this.name);
-  },
+  // created() {
+  //   Octokit.getData().then((res) => console.log(res.data));
+  // },
 };
 </script>
 <template>
