@@ -309,16 +309,17 @@ export default {
 };
 </script>
 <template>
-  <form @submit.prevent="submitForm">
-    <input
-      v-model="inputValue"
-      type="text"
-      placeholder="Add a comment"
-      required
-    />
-    <button id="search" type="submit">Search</button>
-  </form>
   <main class="output">
+    <form @submit.prevent="submitForm">
+      <input
+        v-model="inputValue"
+        type="text"
+        placeholder="Add a comment"
+        required
+      />
+      <button id="search" type="submit">Search</button>
+    </form>
+
     <ul v-if="searchResults">
       <UserCard
         v-for="searchItem in searchResults"
@@ -333,6 +334,8 @@ form {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  max-width: 600px;
+  margin: auto;
 }
 .output {
   width: 100%;
@@ -344,6 +347,6 @@ form {
   grid-template-rows: 1fr 1fr 1fr;
   list-style-type: none;
   max-width: 100%;
-  margin-top: 1rem;
+  margin-top: 2rem;
 }
 </style>

@@ -21,6 +21,10 @@ header {
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  width: 100vw;
+  width: 1280px;
+}
+main {
+  display: grid;
+  grid-template-rows: 50px 1fr;
 }
 </style>

@@ -86,6 +86,11 @@ export default {
 </template>
 
 <style scoped>
+li {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+}
 img {
   height: 50px;
   width: 50px;
