@@ -1,5 +1,5 @@
 <script>
-// import axios from "axios";
+import Octokit from "../services/Octokit";
 import UserCard from "../components/UserCard.vue";
 export default {
   name: "HomeView",
@@ -295,28 +295,24 @@ export default {
   },
 
   methods: {
-    submitForm() {
-      const url = "https://api.github.com/search/users?q=" + this.inputValue;
-      console.log(url);
-      // axios
-      //   .get(url)
-      //   .then((response) => {
-      //     this.searchResults = response.data.items;
-      //   })
-      //   .catch((error) => {
-      //     console.log(error);
-      //   });
-
-      this.inputValue = "";
-    },
+    // submitForm() {
+    //   Octokit.getUserSearchResults(this.inputValue)
+    //     .then((response) => {
+    //       this.searchResults = response.data.items;
+    //     })
+    //     .catch((error) => {
+    //       console.log(error);
+    //     });
+    //   this.inputValue = "";
+    // },
   },
 };
 </script>
 <template>
   <form @submit.prevent="submitForm">
     <input
-      type="text"
       v-model="inputValue"
+      type="text"
       placeholder="Add a comment"
       required
     />
@@ -327,7 +323,7 @@ export default {
       <UserCard
         v-for="searchItem in searchResults"
         :key="searchItem.id"
-        :searchItemProp="searchItem"
+        :search-item-prop="searchItem"
       />
     </ul>
   </main>

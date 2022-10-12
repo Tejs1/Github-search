@@ -1,26 +1,26 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import AboutView from "../views/AboutView.vue";
-import UserProfileView from "../components/UserProfileView.vue";
+import UserProfileView from "../views/UserProfileView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: "/",
-      name: "home",
+      name: "HomeView",
       component: HomeView,
     },
     {
-      path: "/user/:name",
+      path: "/user/:username",
       name: "UserProfileView",
       props: true,
       component: UserProfileView,
     },
     {
       path: "/about",
-      name: "about",
-      component: () => import("../views/AboutView.vue"),
+      name: "AboutView",
+      component: AboutView,
     },
   ],
 });

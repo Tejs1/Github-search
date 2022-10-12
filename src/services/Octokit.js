@@ -4,14 +4,20 @@ import { Octokit } from "octokit";
 const octokit = new Octokit({
   auth: TOKEN,
 });
-
 export default {
-  async getData() {
-    return await octokit.request("GET /users/{username}/repos", {
+  getUserRepo() {
+    return octokit.request("GET /users/{username}/repos", {
       username: "tejsi",
     });
   },
-  //   getEvent(id) {
-  //     return apiClient.get("/events/" + id);
-  //   },
+  getUserSearchResults(value) {
+    return octokit.request("GET /search/users", {
+      q: value,
+    });
+  },
+  getUserDetails(username) {
+    return octokit.request("GET /users/{username}", {
+      username: username,
+    });
+  },
 };

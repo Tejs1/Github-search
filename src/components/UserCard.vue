@@ -1,6 +1,6 @@
 <!-- <script setup> -->
 <script>
-import axios from "axios";
+import Octokit from "../services/Octokit";
 
 export default {
   name: "UserCard",
@@ -12,7 +12,8 @@ export default {
   },
   data() {
     return {
-      userData: JSON.parse(sessionStorage.getItem(this.searchItemProp.login)),
+      userData: null,
+      // userData: JSON.parse(sessionStorage.getItem(this.searchItemProp.login)),
     };
   },
   computed: {
@@ -21,19 +22,18 @@ export default {
         avatar_url: this.searchItemProp.avatar_url + "&s=50",
         login: this.searchItemProp.login,
         type: this.searchItemProp.type,
-        name: this.userData.name || "",
-        followers: this.userData.followers || 0,
-        following: this.userData.following || 0,
-        description: this.userData.bio || "",
-        mail: this.userData.email || "",
-        blog: this.userData.blog || "",
+        name: this.userData ? this.userData.name : "",
+        followers: this.userData ? this.userData.followers : 0,
+        following: this.userData ? this.userData.following : 0,
+        description: this.userData ? this.userData.bio : "",
+        mail: this.userData ? this.userData.email : "",
+        blog: this.userData ? this.userData.blog : "",
       };
     },
   },
 
   created() {
-    // axios
-    //   .get(this.searchItemProp.url)
+    // Octokit.getUserDetails(this.searchItemProp.login)
     //   .then((response) => {
     //     this.userData = response.data;
     //     sessionStorage.setItem(
@@ -53,7 +53,7 @@ export default {
     <RouterLink
       :to="{
         name: 'UserProfileView',
-        params: { name: user.login },
+        params: { username: user.login },
       }"
       class="avatar-div"
     >
@@ -66,7 +66,7 @@ export default {
         <RouterLink
           :to="{
             name: 'UserProfileView',
-            params: { name: user.login },
+            params: { username: user.login },
           }"
         >
           <div>@{{ user.login }}</div></RouterLink
