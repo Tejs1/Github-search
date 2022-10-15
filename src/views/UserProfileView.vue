@@ -1,5 +1,6 @@
 <script>
 import Octokit from "../services/Octokit";
+import UserRepoList from "../components/UserRepoList.vue";
 
 export default {
   name: "UserProfileView",
@@ -11,7 +12,7 @@ export default {
   },
   data() {
     return {
-      userData: JSON.parse(sessionStorage.getItem(this.username)),
+      userData: JSON.parse(localStorage.getItem(this.username)),
     };
   },
   created() {
@@ -22,6 +23,7 @@ export default {
       return this.userData;
     },
   },
+  components: { UserRepoList },
 };
 </script>
 <template>
@@ -40,19 +42,7 @@ export default {
         </div>
       </div>
     </div>
-    <div class="repo-container">
-      <div class="repo">wsfww</div>
-      <div class="repo">wffffff</div>
-      <div class="repo">wwwwwwwwwwwwwww</div>
-      <div class="repo">awwwwww wdf ww</div>
-      <div class="repo">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
-        cupiditate suscipit reiciendis voluptates. Temporibus dolorem ex
-        exercitationem quisquam, quam reprehenderit qui cupiditate quaerat alias
-        id optio nobis nemo. Quasi, voluptate?
-      </div>
-      <div class="repo"></div>
-    </div>
+    <UserRepoList />
   </main>
 </template>
 
@@ -73,15 +63,5 @@ export default {
   flex-direction: column;
   justify-content: space-evenly;
   margin-left: 1rem;
-}
-.repo-container {
-  margin: 2rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-.repo {
-  height: 221px;
-  outline: 1px solid red;
-  padding: 1rem;
 }
 </style>

@@ -33,24 +33,24 @@ export default {
   },
 
   created() {
-    fetch("https://dog.ceo/api/breeds/image/raandom")
-      .then((response) => {
-        console.log(response);
-        this.userData = response.data;
-        sessionStorage.setItem(
-          response.data.login,
-          JSON.stringify(response.data)
-        );
-      })
-      .catch((error) => {
-        console.log(error);
-        console.log(this.searchItemProp);
-        window.localStorage.setItem(
-          this.searchItemProp.login,
-          JSON.stringify(this.searchItemProp)
-        );
-        console.log("wriiiter");
-      });
+    // fetch("https://dog.ceo/api/breeds/image/raandom")
+    //   .then((response) => {
+    //     console.log(response);
+    //     this.userData = response.data;
+    //     sessionStorage.setItem(
+    //       response.data.login,
+    //       JSON.stringify(response.data)
+    //     );
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //     console.log(this.searchItemProp);
+    //     window.localStorage.setItem(
+    //       this.searchItemProp.login,
+    //       JSON.stringify(this.searchItemProp)
+    //     );
+    //     console.log("wriiiter");
+    //   });
     //  "this.searchItemProp.login",
     // "JSON.stringify(this.searchItemProp)"
     // Octokit.getUserDetails(this.searchItemProp.login)
