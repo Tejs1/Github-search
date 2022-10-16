@@ -19,14 +19,19 @@ export default {
       return this.repoData.created_at.split("T")[0];
     },
     langStats() {
-      const statObj = {};
+      const tempObj = {};
       let total = 0;
       for (const property in this.languages) {
-        statObj[property] = this.languages[property];
-        total += this.languages[property];
+        if (this.languages[property] !== 0) {
+          tempObj[property] = this.languages[property];
+          total += this.languages[property];
+        }
       }
-      for (const lang in statObj) {
-        statObj[lang] = Math.round((statObj[lang] / total) * 100);
+      const statObj = {};
+      for (const lang in tempObj) {
+        const percentage = Math.round((tempObj[lang] / total) * 100);
+        //to avoid lang which have percentage ~ 0
+        if (percentage !== 0) statObj[lang] = percentage;
       }
       return statObj;
     },
@@ -46,7 +51,7 @@ export default {
 </script>
 
 <template>
-  <div class="repo">
+  <div class="repo" v-if="Object.keys(this.langStats).length !== 0">
     <div>
       <h1>{{ repoData.name }}</h1>
       <div>Created at :{{ dateOfCreation }}</div>
@@ -62,7 +67,10 @@ export default {
       </div>
       <div v-if="languages" class="repo-stat">
         <div v-for="(item, id) in langStats" :key="langId + id">
-          <span>{{ id + ": " }} </span><span>{{ item }}%</span>
+          <span v-if="!item == 0">
+            <span>{{ id + ": " }}</span>
+            <span>{{ item }}%</span>
+          </span>
         </div>
       </div>
     </div>
