@@ -1,9 +1,9 @@
 <script>
-import Octokit from "../services/Octokit";
 import UserRepoList from "../components/UserRepoList.vue";
 
 export default {
   name: "UserProfileView",
+  components: { UserRepoList },
   props: {
     username: {
       type: String,
@@ -15,21 +15,17 @@ export default {
       userData: JSON.parse(localStorage.getItem(this.username)),
     };
   },
-  created() {
-    // Octokit.getUserRepo().then((res) => console.log(res.data));
-  },
   computed: {
-    name() {
-      return this.userData;
+    avatar() {
+      return this.userData.avatar_url + "&s=150";
     },
   },
-  components: { UserRepoList },
 };
 </script>
 <template>
   <main class="user-profile">
     <div class="user">
-      <img :src="userData.avatar_url" :alt="userData.login" />
+      <img :src="avatar" :alt="userData.login" />
       <div class="user-info">
         <h2>{{ userData.name }}</h2>
         <div>Followers: {{ userData.followers }}</div>
@@ -42,7 +38,7 @@ export default {
         </div>
       </div>
     </div>
-    <UserRepoList />
+    <UserRepoList :login="userData.login" />
   </main>
 </template>
 

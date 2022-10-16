@@ -295,16 +295,16 @@ export default {
   },
 
   methods: {
-    // submitForm() {
-    //   Octokit.getUserSearchResults(this.inputValue)
-    //     .then((response) => {
-    //       this.searchResults = response.data.items;
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //     });
-    //   this.inputValue = "";
-    // },
+    submitForm() {
+      Octokit.getUserSearchResults(this.inputValue)
+        .then((response) => {
+          this.searchResults = response.data.items;
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+      this.inputValue = "";
+    },
   },
 };
 </script>

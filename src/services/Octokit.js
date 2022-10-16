@@ -5,9 +5,15 @@ const octokit = new Octokit({
   auth: TOKEN,
 });
 export default {
-  getUserRepo() {
+  getUserRepo(username) {
     return octokit.request("GET /users/{username}/repos", {
-      username: "tejsi",
+      username: username,
+    });
+  },
+  getRepoLang(username, repoName) {
+    return octokit.request("GET /repos/{owner}/{repo}/languages", {
+      owner: username,
+      repo: repoName,
     });
   },
   getUserSearchResults(value) {
