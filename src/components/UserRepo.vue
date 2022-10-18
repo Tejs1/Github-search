@@ -53,7 +53,17 @@ export default {
 <template>
   <div class="repo" v-if="Object.keys(this.langStats).length !== 0">
     <div>
-      <h1>{{ repoData.name }}</h1>
+      <RouterLink
+        :to="{
+          name: 'RepoDetailsView',
+          params: {
+            username: repoData.owner.login,
+            reponame: repoData.name,
+          },
+        }"
+      >
+        <h1>{{ repoData.name }}</h1>
+      </RouterLink>
       <div>Created at :{{ dateOfCreation }}</div>
       <div class="colors">
         <span

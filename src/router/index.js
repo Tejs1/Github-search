@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import AboutView from "../views/AboutView.vue";
 import UserProfileView from "../views/UserProfileView.vue";
+import RepoDetailsView from "../views/RepoDetailsView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -16,6 +17,12 @@ const router = createRouter({
       name: "UserProfileView",
       props: true,
       component: UserProfileView,
+    },
+    {
+      path: "/user/:username/:reponame",
+      name: "RepoDetailsView",
+      props: true,
+      component: RepoDetailsView,
     },
     {
       path: "/about",

@@ -16,6 +16,13 @@ export default {
       repo: repoName,
     });
   },
+  getRepoContents(username, repoName, path) {
+    return octokit.request("GET /repos/{owner}/{repo}/contents/{path}", {
+      owner: username,
+      repo: repoName,
+      path: path,
+    });
+  },
   getUserSearchResults(value) {
     return octokit.request("GET /search/users", {
       q: value,

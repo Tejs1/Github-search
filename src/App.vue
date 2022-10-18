@@ -21,10 +21,13 @@ header {
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  width: 1280px;
+  max-width: 1280px;
+  width: 100vw;
 }
 main {
   display: grid;
   grid-template-rows: 50px 1fr;
+  max-width: 1280px;
+  width: 100vw;
 }
 </style>
