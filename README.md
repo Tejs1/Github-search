@@ -3,6 +3,9 @@
 ## Dependancies
 
 ### Vue + Vite
+##Todo
+### add styles
+### search organizations option
 
 ### Octokit:
 
