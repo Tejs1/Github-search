@@ -72,12 +72,11 @@ export default {
         >
       </div>
       <div>
-        <div>Followers :{{ user.followers }}</div>
+        <div v-if="user.followers">Followers :{{ user.followers }}</div>
         <div>Following :{{ user.following }}</div>
       </div>
       <div>
-        <span>abx@emailcom</span>
-        <br />
+        <span v-if="user.mail">{{ user.mail }}</span>
         <a v-if="user.blog" :href="user.blog" target="_blank">blog</a>
       </div>
     </div>
