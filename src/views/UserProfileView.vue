@@ -1,9 +1,10 @@
 <script>
 import UserRepoList from "../components/UserRepoList.vue";
+import UserFollowersMutual from "../components/UserFollowersMutual.vue";
 
 export default {
   name: "UserProfileView",
-  components: { UserRepoList },
+  components: { UserRepoList, UserFollowersMutual },
   props: {
     username: {
       type: String,
@@ -37,6 +38,7 @@ export default {
           <a :href="userData.blog">{{ userData.blog }}</a>
         </div>
       </div>
+      <UserFollowersMutual :login="userData.login" />
     </div>
     <UserRepoList :login="userData.login" />
   </main>

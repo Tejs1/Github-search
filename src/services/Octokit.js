@@ -33,4 +33,9 @@ export default {
       username: username,
     });
   },
+  getUserFollowers(username) {
+    return octokit.request("GET /users/{username}/followers", {
+      username: username,
+    });
+  },
 };
