@@ -88,9 +88,17 @@ li {
   flex-direction: column;
   display: flex;
   justify-content: center;
+  border: 1px solid red;
+  margin: 1rem;
+  transition: transform 0.3s ease;
+  box-shadow: rgba(255, 0, 0, 0.451) 1px 2px;
 }
 img {
   height: 52px;
   width: 52px;
+}
+li:hover {
+  transform: translateY(-5px);
+  box-shadow: rgba(255, 0, 0, 0.46) 2px 3px;
 }
 </style>
