@@ -5,6 +5,7 @@
 ## Todo
 
 - [x] Search bar to search GitHub user
+  - [ ] Pagination or Infinite scroll for search results
 - [x] GitHub Profile page, of a GitHub user
   - [x] Name , Email , Blog , Description, Avatar
   - [x] Call Diff avatar sizes from gituhub api
@@ -27,6 +28,8 @@
   - [x] UserProfile
   - [x] UserRepo
 - [x] Integrate GitHub APIs to fetch all data
+- [ ] Not found Page
+- [ ] Shimmer or loader while getting data
 - [ ] Mobile responsive
 - [ ] Search repositories [ by keyword, language or any other parameter ]
 - [ ] GitHub organizations [search, list, profile, repositories ]
