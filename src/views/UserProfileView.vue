@@ -47,16 +47,20 @@ export default {
 <style lang="css" scoped>
 .user-profile {
   display: grid;
-  grid-template-rows: 150px 1fr;
   width: 100%;
   height: 100%;
+  grid-template-rows: 150px 1fr;
 }
 .user {
-  display: flex;
+  display: grid;
+  grid-template-columns: 150px 150px 1fr;
   justify-content: center;
   text-align: left;
+  width: 100%;
+  padding: 0 2rem;
 }
 .user-info {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;

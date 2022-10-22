@@ -38,7 +38,7 @@ export default {
       v-for="follower in followersData"
       :key="follower.id"
       :src="follower.avatar_url + size"
-      alt="follower.login"
+      :alt="follower.login"
       height="55"
       width="55"
     />
@@ -47,9 +47,9 @@ export default {
 
 <style scoped>
 .wrapper-followers {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
-  width: 500px;
   height: 100%;
   margin: 1rem;
 }
