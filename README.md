@@ -13,6 +13,7 @@
   - [x] Followers avatar
   - [ ] Show mutual Followers of user and client
   - [ ] Show mutual Following of user and client
+  - [ ] route to profile of follower or following
   - [ ] Longest streak
   - [ ] Top Languages
 - [ ] List all the repository of the GitHub user
