@@ -96,4 +96,8 @@ export default {
   justify-content: space-evenly;
   margin-left: 1rem;
 }
+.user img {
+  height: 150px;
+  width: 150px;
+}
 </style>
