@@ -15,18 +15,29 @@ export default {
   },
   data() {
     return {
-      userData: null,
-      userRepos: null,
+      userData: [],
+      userRepos: [],
     };
   },
+  methods: {
+    getUserRepo(login) {
+      Octokit.getUserRepo(login)
+        .then((response) => {
+          this.userRepos = response.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+  },
   created() {
-    Octokit.getUserRepo(this.login)
-      .then((response) => {
-        this.userRepos = response.data;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    this.getUserRepo(this.login);
+  },
+  watch: {
+    login(newValue, oldValue) {
+      console.log(newValue, oldValue);
+      this.getUserRepo(newValue);
+    },
   },
 };
 </script>
