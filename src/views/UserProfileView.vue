@@ -1,4 +1,5 @@
 <script>
+import Octokit from "../services/Octokit";
 import UserRepoList from "../components/UserRepoList.vue";
 import UserFollowersMutual from "../components/UserFollowersMutual.vue";
 
@@ -21,10 +22,26 @@ export default {
       return this.userData.avatar_url + "&s=150";
     },
   },
+  created() {
+    if (!this.userData) {
+      Octokit.getUserDetails(this.username)
+        .then((response) => {
+          console.log("fetched data");
+          this.userData = response.data;
+          localStorage.setItem(
+            response.data.login,
+            JSON.stringify(response.data)
+          );
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  },
 };
 </script>
 <template>
-  <main class="user-profile">
+  <main v-if="userData" class="user-profile">
     <div class="user">
       <img :src="avatar" :alt="userData.login" />
       <div class="user-info">
