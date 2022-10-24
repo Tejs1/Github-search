@@ -22,21 +22,34 @@ export default {
       return this.userData.avatar_url + "&s=150";
     },
   },
+  methods: {
+    getUserDetails(username) {
+      this.userData = null;
+      const storedData = JSON.parse(localStorage.getItem(username));
+      if (storedData) {
+        this.userData = storedData;
+      } else {
+        Octokit.getUserDetails(username)
+          .then((response) => {
+            this.userData = response.data;
+            localStorage.setItem(
+              response.data.login,
+              JSON.stringify(response.data)
+            );
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    },
+  },
   created() {
-    if (!this.userData) {
-      Octokit.getUserDetails(this.username)
-        .then((response) => {
-          console.log("fetched data");
-          this.userData = response.data;
-          localStorage.setItem(
-            response.data.login,
-            JSON.stringify(response.data)
-          );
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
+    this.getUserDetails(this.username);
+  },
+  watch: {
+    username(newValue, oldValue) {
+      this.getUserDetails(newValue);
+    },
   },
 };
 </script>

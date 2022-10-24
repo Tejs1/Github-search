@@ -12,7 +12,7 @@ export default {
   },
   data() {
     return {
-      userData: null,
+      userData: JSON.parse(localStorage.getItem(this.searchItemProp.login)),
     };
   },
   computed: {
