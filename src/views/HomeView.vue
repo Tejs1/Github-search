@@ -314,7 +314,7 @@ export default {
       <input
         v-model="inputValue"
         type="text"
-        placeholder="Add a comment"
+        placeholder="Enter name"
         required
       />
       <button id="search" type="submit">Search</button>
