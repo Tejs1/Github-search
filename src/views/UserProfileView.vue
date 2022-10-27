@@ -26,9 +26,8 @@ export default {
     getUserDetails(username) {
       this.userData = null;
       const storedData = JSON.parse(localStorage.getItem(username));
-      if (storedData) {
-        this.userData = storedData;
-      } else {
+      if (storedData) this.userData = storedData;
+      else {
         Octokit.getUserDetails(username)
           .then((response) => {
             this.userData = response.data;
@@ -47,7 +46,7 @@ export default {
     this.getUserDetails(this.username);
   },
   watch: {
-    username(newValue, oldValue) {
+    username(newValue) {
       this.getUserDetails(newValue);
     },
   },

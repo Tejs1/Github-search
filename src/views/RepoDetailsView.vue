@@ -19,7 +19,6 @@ export default {
     };
   },
   created() {
-    console.log(this.reponame, this.username);
     Octokit.getRepoContents(this.username, this.reponame).then(
       (resp) => (this.filesInfo = resp.data)
     );
