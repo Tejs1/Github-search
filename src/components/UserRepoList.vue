@@ -19,6 +19,15 @@ export default {
       userRepos: [],
     };
   },
+  watch: {
+    login(newValue, oldValue) {
+      console.log(newValue, oldValue);
+      this.getUserRepo(newValue);
+    },
+  },
+  created() {
+    this.getUserRepo(this.login);
+  },
   methods: {
     getUserRepo(login) {
       Octokit.getUserRepo(login)
@@ -28,15 +37,6 @@ export default {
         .catch((error) => {
           console.log(error);
         });
-    },
-  },
-  created() {
-    this.getUserRepo(this.login);
-  },
-  watch: {
-    login(newValue, oldValue) {
-      console.log(newValue, oldValue);
-      this.getUserRepo(newValue);
     },
   },
 };

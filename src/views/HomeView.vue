@@ -295,6 +295,18 @@ export default {
     };
   },
 
+  watch: {
+    searchQuery(newValue) {
+      console.log(newValue);
+      if (newValue) this.getUserSearchResults(newValue);
+    },
+  },
+  created() {
+    this.searchQuery = this.$route.query.search;
+    console.log(this.searchQuery);
+    if (this.searchQuery) this.getUserSearchResults(this.searchQuery);
+  },
+
   methods: {
     submitForm() {
       this.$router.push({
@@ -312,18 +324,6 @@ export default {
           console.error(error);
         });
       this.inputValue = "";
-    },
-  },
-  created() {
-    this.searchQuery = this.$route.query.search;
-    console.log(this.searchQuery);
-    if (this.searchQuery) this.getUserSearchResults(this.searchQuery);
-  },
-
-  watch: {
-    searchQuery(newValue, oldValue) {
-      console.log(newValue);
-      if (newValue) this.getUserSearchResults(newValue);
     },
   },
 };

@@ -51,7 +51,7 @@ export default {
 </script>
 
 <template>
-  <div class="repo" v-if="Object.keys(this.langStats).length !== 0">
+  <div v-if="Object.keys(langStats).length !== 0" class="repo">
     <div>
       <RouterLink
         :to="{

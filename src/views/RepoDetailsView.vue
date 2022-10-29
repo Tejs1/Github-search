@@ -28,7 +28,7 @@ export default {
 
 <template>
   <main>
-    <h2>{{ this.reponame }}</h2>
+    <h2>{{ reponame }}</h2>
     <ul>
       <li v-for="file in filesInfo" :key="file.sha">
         <a :href="file.git_url">

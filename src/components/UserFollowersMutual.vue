@@ -14,6 +14,11 @@ export default {
       followersData: [],
     };
   },
+  computed: {
+    size() {
+      return "&s=50";
+    },
+  },
   created() {
     console.log("this.login");
     Octokit.getUserFollowers(this.login)
@@ -24,18 +29,13 @@ export default {
         console.log(error);
       });
   },
-  computed: {
-    size() {
-      return "&s=50";
-    },
-  },
 };
 </script>
 <template>
-  <div class="wrapper-followers">
+  <div v-if="followersData" class="wrapper-followers">
     <RouterLink
-      v-if="followersData"
       v-for="follower in followersData"
+      :key="follower.id"
       :to="{
         name: 'UserProfileView',
         params: { username: follower.login },
@@ -43,7 +43,6 @@ export default {
       class="avatar-div"
     >
       <img
-        :key="follower.id"
         :src="follower.avatar_url + size"
         :alt="follower.login"
         height="55"
