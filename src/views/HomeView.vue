@@ -294,9 +294,15 @@ export default {
       ],
     };
   },
+  created() {
+    this.searchQuery = this.$route.query.search;
+    console.log("created");
+    if (this.searchQuery) this.getUserSearchResults(this.searchQuery);
+  },
 
   methods: {
     submitForm() {
+      console.log("submit");
       this.$router.push({
         name: "HomeView",
         query: { search: this.inputValue },
@@ -304,26 +310,24 @@ export default {
       this.getUserSearchResults(this.inputValue);
     },
     getUserSearchResults(inputValue) {
+      // const storedData = JSON.parse(localStorage.getItem(username));
+      // if (storedData) this.userData = storedData;
+      // else {
       Octokit.getUserSearchResults(inputValue)
         .then((response) => {
           this.searchResults = response.data.items;
+          console.log(response.data);
+          // this.searchResults = response.data.items;
+          // localStorage.setItem(
+          //   response.data.login,
+          //   JSON.stringify(response.data)
+          // );
         })
         .catch((error) => {
           console.error(error);
         });
+      // }
       this.inputValue = "";
-    },
-  },
-  created() {
-    this.searchQuery = this.$route.query.search;
-    console.log(this.searchQuery);
-    if (this.searchQuery) this.getUserSearchResults(this.searchQuery);
-  },
-
-  watch: {
-    searchQuery(newValue, oldValue) {
-      console.log(newValue);
-      if (newValue) this.getUserSearchResults(newValue);
     },
   },
 };

@@ -26,6 +26,7 @@ export default {
   getUserSearchResults(value) {
     return octokit.request("GET /search/users", {
       q: value,
+      // per_page: 100,
     });
   },
   getUserDetails(username) {

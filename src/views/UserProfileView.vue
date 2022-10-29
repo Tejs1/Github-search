@@ -22,6 +22,14 @@ export default {
       return this.userData.avatar_url + "&s=150";
     },
   },
+  watch: {
+    username(newValue) {
+      this.getUserDetails(newValue);
+    },
+  },
+  created() {
+    this.getUserDetails(this.username);
+  },
   methods: {
     getUserDetails(username) {
       this.userData = null;
@@ -40,14 +48,6 @@ export default {
             console.log(error);
           });
       }
-    },
-  },
-  created() {
-    this.getUserDetails(this.username);
-  },
-  watch: {
-    username(newValue) {
-      this.getUserDetails(newValue);
     },
   },
 };
