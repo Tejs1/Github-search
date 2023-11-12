@@ -93,6 +93,7 @@ export default {
   height: 221px;
   outline: 1px solid red;
   padding: 1rem;
+  background-color: #242424;
 }
 h1 {
   font-size: larger;

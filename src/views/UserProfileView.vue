@@ -78,15 +78,16 @@ export default {
   display: grid;
   width: 100%;
   height: 100%;
-  grid-template-rows: 150px 1fr;
+  grid-template-rows: 200px 1fr;
 }
 .user {
   display: grid;
-  grid-template-columns: 150px 150px 1fr;
+  grid-template-columns: 150px 200px 1fr;
   justify-content: center;
   text-align: left;
   width: 100%;
   padding: 0 2rem;
+  align-items: center;
 }
 .user-info {
   width: 100%;

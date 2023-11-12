@@ -57,7 +57,6 @@ export default {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  height: 100%;
   margin: 1rem;
 }
 .wrapper-followers img {
