@@ -87,13 +87,11 @@ export default {
   text-align: left;
   width: 100%;
   padding: 0 2rem;
-  align-items: center;
 }
 .user-info {
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   margin-left: 1rem;
 }
 .user img {
