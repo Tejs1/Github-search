@@ -58,6 +58,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   margin: 1rem;
+  overflow: auto;
 }
 .wrapper-followers img {
   padding: 5px;
